@@ -456,7 +456,8 @@ def gen_xml_v43(inv, sale_conditions, total_servicio_gravado,
                     sb.Append('<IdentificacionExtranjero>' + receiver_company.vat + '</IdentificacionExtranjero>')
             else:
                 sb.Append('<Identificacion>')
-                sb.Append('<Tipo>' + id_code + '</Tipo>')
+                if id_code != "05":
+                    sb.Append('<Tipo>' + id_code + '</Tipo>')
                 sb.Append('<Numero>' + vat + '</Numero>')
                 sb.Append('</Identificacion>')
 
