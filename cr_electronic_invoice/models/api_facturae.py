@@ -451,13 +451,12 @@ def gen_xml_v43(inv, sale_conditions, total_servicio_gravado,
             sb.Append('<Receptor>')
             sb.Append('<Nombre>' + escape(str(receiver_company.name[:99])) + '</Nombre>')
 
-            if inv.tipo_documento == 'FEE':
+            if inv.tipo_documento == 'FEE' or (inv.tipo_documento in ['NC', 'ND'] and id_code == "05"):
                 if receiver_company.vat:
                     sb.Append('<IdentificacionExtranjero>' + receiver_company.vat + '</IdentificacionExtranjero>')
             else:
                 sb.Append('<Identificacion>')
-                if id_code != "05":
-                    sb.Append('<Tipo>' + id_code + '</Tipo>')
+                sb.Append('<Tipo>' + id_code + '</Tipo>')
                 sb.Append('<Numero>' + vat + '</Numero>')
                 sb.Append('</Identificacion>')
 
