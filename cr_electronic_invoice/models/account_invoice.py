@@ -320,7 +320,7 @@ class AccountInvoiceElectronic(models.Model):
 	not_loaded_invoice_date = fields.Date(string='Fecha Factura Original no cargada', readonly=True, )
 
 	_sql_constraints = [
-		('number_electronic_uniq', 'unique (company_id, number_electronic)',
+		('number_electronic_uniq', 'unique (company_id, partner_id, number_electronic)',
 			"La clave de comprobante debe ser única"),
 	]
 
